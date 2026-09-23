@@ -2,30 +2,16 @@ const listaPedidos = new Map();
 
 // Función para agregar productos
 function agregarProductoACaja(nombreCliente, nombreProducto, precio) {
-  // Validaciones
-  if (!nombreCliente || nombreCliente === "") {
-    console.log("Error: Nombre de cliente no válido.");
-    return;
-  }
-  if (!nombreProducto || nombreProducto === "") {
-    console.log("Error: El producto no puede estar vacío.");
-    return;
-  }
-  if (precio <= 0) {
-    console.log("Error: El precio debe ser mayor a 0.");
-    return;
-  }
+  if (!nombreCliente || nombreCliente === "") return;
+  if (!nombreProducto || nombreProducto === "") return;
+  if (precio <= 0) return;
 
-  // Si el cliente no esta lo registramos 
   if (!listaPedidos.has(nombreCliente)) {
     listaPedidos.set(nombreCliente, { listaProductos: [], totalAcumulado: 0 });
   }
 
-  //Metemos el producto del cliente
   const pedidoCliente = listaPedidos.get(nombreCliente);
   pedidoCliente.listaProductos.push({ nombreProducto: nombreProducto, precio: precio });
-
-  console.log("Producto agregado al pedido de " + nombreCliente);
 }
 
 // Función para calcular subtotal, IVA y total 
@@ -57,9 +43,64 @@ function calcularCaja(nombreCliente) {
   console.log("IVA (16%): $" + iva);
   console.log("Total a pagar: $" + total);
 }
-// Pruebas en consola
-agregarProductoACaja("Mont", "Ron", 600);
-agregarProductoACaja("Mont", "Vino", 700);
-agregarProductoACaja("Mont", "Jamón", -10);
 
-calcularCaja("Mont");
+// Submenú de Caja 
+async function menuCaja(pedidosMap, preguntar) {
+    const mapaUso = pedidosMap || listaPedidos;
+    let continuar = true;
+
+    while (continuar) {
+        console.log("\n--- MENÚ DE CAJA ---");
+        console.log("1. Mostrar caja de cliente");
+        console.log("2. Regresar al menú principal");
+
+        const opcion = await preguntar("Selecciona una opción: ");
+
+        switch (opcion.trim()) {
+            case '1':
+                const cliente = await preguntar("Nombre del cliente: ");
+
+                if (!cliente || !mapaUso.has(cliente)) {
+                    console.log("\nNo existe pedido para " + cliente);
+                } else {
+                    const datosCliente = mapaUso.get(cliente);
+                    const productos = Array.isArray(datosCliente) ? datosCliente : (datosCliente.listaProductos || []);
+
+                    if (productos.length === 0) {
+                        console.log("\nNo hay productos registrados.");
+                    } else {
+                        //Listar pedidos
+                        console.log(`\n--- LISTA DE PEDIDOS (${cliente}) ---`);
+                        productos.forEach(prod => {
+                            const nombre = prod.nombreProducto || prod.nombre;
+                            console.log(`- ${nombre}: $${prod.precio}`);
+                        });
+
+                    
+                        const subtotal = productos.reduce((acc, { precio }) => acc + precio, 0);
+                        const iva = subtotal * 0.16;
+                        const total = subtotal + iva;
+
+                        console.log(`\nTotal acumulado (subtotal): $${subtotal.toFixed(2)}`);
+                        console.log(`IVA (16%): $${iva.toFixed(2)}`);
+                        console.log(`Total: $${total.toFixed(2)}`);
+                    }
+                }
+                break;
+
+            case '2':
+                continuar = false;
+                break;
+
+            default:
+                console.log("\nOpción no válida.");
+                break;
+        }
+    }
+}
+module.exports = { 
+    menuCaja, 
+    agregarProductoACaja, 
+    calcularCaja, 
+    listaPedidos 
+};
