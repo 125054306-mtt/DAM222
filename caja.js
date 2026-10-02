@@ -6,7 +6,7 @@ function menuCaja() {
 }
 
 //Status del pedido usando callback 
-function verificarEstatusPedido(pedido callbackNotificacion) {
+function verificarEstatusPedido(pedido, callbackNotificacion) {
     if(!pedido.cancelado == true) {
         callbackNotificacion("El pedido fue cancelado por cocina");
         return false;
@@ -112,3 +112,4 @@ async function menuCaja(listaPedidos, listaPromociones, preguntar) {
 module.exports = { 
     menuCaja 
 };
+
