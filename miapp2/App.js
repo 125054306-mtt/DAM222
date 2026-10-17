@@ -1,5 +1,6 @@
 
 /* 1. Zona de importaciones */
+
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import {Saludo} from './components/Saludo';
@@ -12,22 +13,15 @@ import { Perfil } from './components/Perfil';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Hola estrellitas, esta es mi paractica!!</Text>
-      <Image source={require("./assets/wave.png")} ></Image>
-      <Text>-----------------------------------------</Text>
-      <Saludo></Saludo>
-      <Saludo/>
+      
+      <Perfil nombre="Genaro" carrera="ITIID" materia="Movil" cuatri="4"/>
 
-      <Text>-----------------------------------------</Text>
-      <Saludos2></Saludos2>
-      <Saludos2/>
+      <Perfil nombre="Emilio" carrera="ITIID" materia="Movil" cuatri="4"/>
 
-      <Text>-----------------------------------------</Text>
-      <Perfil></Perfil>
-      <Perfil/>
-
+      <Perfil nombre="Jeny" carrera="ITIID" materia="Movil" cuatri="4"/>
 
       <StatusBar style="auto" />
+
     </View>
   );
 }
