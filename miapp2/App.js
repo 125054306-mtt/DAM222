@@ -29,14 +29,13 @@ export default function App() {
 
 /* 3. Zona Estilis & Posicionamiento */
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection:'column-reverse',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+container: {
+  flex: 1,
+  flexDirection: 'row',
+  justifyContent: 'space-around',
+  alignItems: 'center',
   },
-    tarjeta1:{backgroundColor:'purple'},
+  tarjeta1:{backgroundColor:'purple'},
   tarjeta2:{backgroundColor:'yellow'},
   tarjeta3:{backgroundColor:'pink'},
 });
