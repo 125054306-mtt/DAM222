@@ -6,7 +6,7 @@ import { StyleSheet,  View, Text, Button} from 'react-native';
 import { useState } from 'react';
 import Tarjetas from './Tarjetas';
 import SafeScreen from './SafeScreen';
-import Pressable from './Pressable';
+import PressableScreen from './PressableScreen';
 import TextInput from './TextInput';
 import FlatList from './FlatList';
 import ImageBackgroung from './ImageBackgroung';
@@ -23,8 +23,8 @@ export default function MenuScreen() {
             return <Tarjetas/>
         case 'safeScreen':
             return <SafeScreen/>
-        case 'Pressable':
-            return <Pressable/>
+        case 'pressableScreen':
+            return <PressableScreen/>
         case 'textInput':
             return <TextInput/>
         case 'FlatList':
@@ -44,7 +44,7 @@ export default function MenuScreen() {
 
                     <Button title ='Tarjetas' onPress={ ()=>setScreen('tarjetas') }></Button>
                     <Button title ='SafeAreaView' onPress={ ()=>setScreen('safeScreen') }></Button>
-                    <Button title ='Pressable' onPress={ ()=>setScreen('Pressable') }></Button>
+                    <Button title ='Pressable' onPress={ ()=>setScreen('pressableScreen') }></Button>
                     <Button title ='TextInput' onPress={ ()=>setScreen('textInput') }></Button>
                     <Button title ='FlatList' onPress={ ()=>setScreen('FlatList') }></Button>
                     <Button title ='ImageBackgroung' onPress={ ()=>setScreen('imageBackgroung') }></Button>
