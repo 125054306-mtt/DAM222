@@ -9,7 +9,7 @@ import SafeScreen from './SafeScreen';
 import PressableScreen from './PressableScreen';
 import TextInput from './TextInput';
 import FlatListScreen from './FlatListScreen';
-import ImageBackgroung from './ImageBackgroung';
+import ImageBackgroungScreen from './ImageBackgroungScreen';
 import Modal from './Modal';
 import ActivityIndicator from './ActivityIndicator';
 
@@ -29,8 +29,8 @@ export default function MenuScreen() {
             return <TextInput/>
         case 'FlatListScreen':
             return <FlatListScreen/>
-        case 'imageBackgroung':
-            return <ImageBackgroung/>
+        case 'imageBackgroungScreen':
+            return <ImageBackgroungScreen/>
         case 'Modal':
             return <Modal/>
         case 'activityIndicator':
@@ -47,7 +47,7 @@ export default function MenuScreen() {
                     <Button title ='Pressable' onPress={ ()=>setScreen('pressableScreen') }></Button>
                     <Button title ='TextInput' onPress={ ()=>setScreen('textInput') }></Button>
                     <Button title ='FlatListScreen' onPress={ ()=>setScreen('FlatListScreen') }></Button>
-                    <Button title ='ImageBackgroung' onPress={ ()=>setScreen('imageBackgroung') }></Button>
+                    <Button title ='ImageBackgroungScreen' onPress={ ()=>setScreen('imageBackgroungScreen') }></Button>
                     <Button title ='Modal' onPress={ ()=>setScreen('Modal') }></Button>
                     <Button title ='ActivityIndicator' onPress={ ()=>setScreen('activityIndicator') }></Button>
       
