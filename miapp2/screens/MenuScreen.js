@@ -10,7 +10,7 @@ import PressableScreen from './PressableScreen';
 import TextInput from './TextInput';
 import FlatListScreen from './FlatListScreen';
 import ImageBackgroungScreen from './ImageBackgroungScreen';
-import Modal from './Modal';
+import Modal from './ModalBottomSheet';
 import ActivityIndicator from './ActivityIndicator';
 
 
