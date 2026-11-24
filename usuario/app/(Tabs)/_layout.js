@@ -14,9 +14,9 @@ export default function TabsLayout() {
                 name="alta"
                 options={{
                     title:"Formulario",
-                    /* tabBarIcon: ({color, size})=>(
+                    tabBarIcon: ({color, size})=>(
                         <Ionicons name="person-add" size={15} color={"purple"}/>
-                    ) */
+                    )
                 }}
             />
 
@@ -24,9 +24,9 @@ export default function TabsLayout() {
                 name="consulta"
                 options={{
                     title:"Listado",
-                    /* tabBarIcon: ({color, size})=>(
+                    tabBarIcon: ({color, size})=>(
                         <Ionicons name="list" size={15} color={"red"}/>
-                    ) */
+                    )
                 }}
                     
             />
